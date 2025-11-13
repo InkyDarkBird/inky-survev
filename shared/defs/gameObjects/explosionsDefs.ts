@@ -13,7 +13,7 @@ export interface ExplosionDef {
     teamDamage?: boolean;
     freezeAmount?: number; // unused atm in favor of gameconfig constant
     freezeDuration?: number; // how long to slow down player on hit
-    dropRandomLoot?: boolean;
+    dropRandomLoot?: number;
 }
 
 export const ExplosionDefs: Record<string, ExplosionDef> = {
@@ -129,7 +129,7 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
     },
     explosion_snowball: {
         type: "explosion",
-        damage: 2,
+        damage: 8,
         obstacleDamage: 1,
         rad: { min: 1.24, max: 1.25 },
         shrapnelCount: 0,
@@ -137,12 +137,12 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
         explosionEffectType: "snowball",
         decalType: "decal_snowball_explosion",
         freezeAmount: 3,
-        freezeDuration: 0.5,
-        dropRandomLoot: true,
+        freezeDuration: 2,
+        dropRandomLoot: 1,
     },
     explosion_snowball_heavy: {
         type: "explosion",
-        damage: 5,
+        damage: 16,
         obstacleDamage: 1,
         rad: { min: 1.24, max: 1.25 },
         shrapnelCount: 0,
@@ -150,12 +150,12 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
         explosionEffectType: "snowball_heavy",
         decalType: "decal_snowball_explosion",
         freezeAmount: 3,
-        freezeDuration: 1,
-        dropRandomLoot: true,
+        freezeDuration: 3,
+        dropRandomLoot: 1,
     },
     explosion_potato: {
         type: "explosion",
-        damage: 2,
+        damage: 12,
         obstacleDamage: 1,
         teamDamage: false,
         rad: { min: 1.24, max: 1.25 },
@@ -165,11 +165,11 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
         decalType: "decal_potato_explosion",
         freezeAmount: 3,
         freezeDuration: 0.5,
-        dropRandomLoot: true,
+        dropRandomLoot: 1,
     },
     explosion_potato_heavy: {
         type: "explosion",
-        damage: 5,
+        damage: 24,
         obstacleDamage: 1,
         teamDamage: false,
         rad: { min: 1.24, max: 1.25 },
@@ -179,7 +179,7 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
         decalType: "decal_potato_explosion",
         freezeAmount: 3,
         freezeDuration: 1,
-        dropRandomLoot: true,
+        dropRandomLoot: 2,
     },
     explosion_potato_cannonball: {
         type: "explosion",
