@@ -224,7 +224,7 @@ export const ThrowableDefs: Record<string, ThrowableDef> = {
         throwPhysics: {
             playerVelMult: 0.6,
             velZ: 5,
-            speed: 20,
+            speed: 5,
             spinVel: 10 * Math.PI,
             spinDrag: 1,
         },

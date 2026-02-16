@@ -350,7 +350,7 @@ export class Projectile extends BaseGameObject {
         if (def.splitType && def.numSplit) {
             for (let i = 0; i < def.numSplit; i++) {
                 const splitDef = GameObjectDefs[def.splitType] as ThrowableDef;
-                const velocity = v2.add(this.vel, v2.mul(v2.randomUnit(), 5));
+                const velocity = v2.add(this.vel, v2.mul(v2.randomUnit(), splitDef.throwPhysics.speed));
                 this.game.projectileBarn.addProjectile(
                     this.playerId,
                     def.splitType,
