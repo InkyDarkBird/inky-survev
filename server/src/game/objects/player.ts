@@ -762,6 +762,11 @@ export class Player extends BaseGameObject {
         this.setGroupStatuses();
     }
 
+    disconnect(reason?: string) {
+        this.disconnected = true;
+        this.game.closeSocket(this.socketId, reason);
+    }
+
     private _spectatorCount = 0;
     set spectatorCount(spectatorCount: number) {
         if (this._spectatorCount === spectatorCount) return;
@@ -2626,7 +2631,7 @@ export class Player extends BaseGameObject {
             this.spectateCooldownCount++;
 
             if (this.spectateCooldownCount > 10) {
-                this.game.closeSocket(this.socketId);
+                this.disconnect();
                 this.game.logger.error(
                     `Game ${this.game.id} - Player ${this.name} disconnected for spamming SpectateMsg (cooldown)`,
                 );
@@ -2638,7 +2643,7 @@ export class Player extends BaseGameObject {
         this.spectateMsgCount++;
 
         if (this.spectateMsgCount > 50) {
-            this.game.closeSocket(this.socketId);
+            this.disconnect();
             this.game.logger.error(
                 `Game ${this.game.id} - Player ${this.name} Player ${this.name} disconnected for spamming SpectateMsg (count)`,
             );
