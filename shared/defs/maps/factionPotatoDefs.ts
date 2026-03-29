@@ -90,7 +90,6 @@ const mapDef: PartialMapDef = {
     },
     biome: {
         particles: { camera: "falling_potato" },
-        frozenSprites: ["player-mash-01.img", "player-mash-02.img", "player-mash-03.img"],
     },
     gameMode: {
         maxPlayers: 100,

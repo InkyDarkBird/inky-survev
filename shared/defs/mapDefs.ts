@@ -106,7 +106,6 @@ export interface MapDef {
             planeSound: string;
             airdropImg: string;
         };
-        frozenSprites?: string[];
     };
     gameMode: {
         maxPlayers: number;

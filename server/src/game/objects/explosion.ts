@@ -165,14 +165,14 @@ export class ExplosionBarn {
                 return;
             }
             if (!isSourceTeammate) {
-                if (def.freezeAmount && def.freezeDuration) {
+                if (def.freezeDuration) {
                     const playerRot = Math.atan2(obj.dir.y, obj.dir.x);
                     const collRot = -Math.atan2(collision.dir.y, collision.dir.x);
 
                     const ori =
                         (math.radToOri(playerRot) + math.radToOri(collRot) + 2) % 4;
 
-                    obj.freeze(ori, def.freezeDuration);
+                    obj.freeze(explosion.type, ori, def.freezeDuration);
                 }
                 if (def.dropRandomLoot) {
                     for (let i = 0; i < def.dropRandomLoot; i++) {

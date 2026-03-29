@@ -885,6 +885,7 @@ export class Player extends BaseGameObject {
     frozenTicker = 0;
     frozen = false;
     frozenOri = 0;
+    frozenType = "";
 
     private _hasteTicker = 0;
     hasteType: HasteType = GameConfig.HasteType.None;
@@ -4664,9 +4665,10 @@ export class Player extends BaseGameObject {
         this.setDirty();
     }
 
-    freeze(frozenOri: number, duration: number): void {
+    freeze(type: string, frozenOri: number, duration: number): void {
         this.frozenTicker = duration;
         this.frozen = true;
+        this.frozenType = type;
         this.frozenOri = frozenOri;
         this.setDirty();
     }

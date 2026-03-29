@@ -1,5 +1,6 @@
 import * as PIXI from "pixi.js-legacy";
 import { GameObjectDefs, type LootDef } from "../../../shared/defs/gameObjectDefs";
+import type { ExplosionDef } from "../../../shared/defs/gameObjects/explosionsDefs";
 import type {
     BackpackDef,
     BoostDef,
@@ -337,6 +338,7 @@ export class Player implements AbstractObject {
         m_healEffect: boolean;
         m_frozen: boolean;
         m_frozenOri: number;
+        m_frozenType: string;
         m_hasteType: Exclude<HasteType, HasteType.Count>;
         m_hasteSeq: number;
         m_actionItem: string;
@@ -490,6 +492,7 @@ export class Player implements AbstractObject {
             m_healEffect: false,
             m_frozen: false,
             m_frozenOri: 0,
+            m_frozenType: "",
             m_hasteType: HasteType.None,
             m_hasteSeq: 0,
             m_actionItem: "",
@@ -564,6 +567,10 @@ export class Player implements AbstractObject {
             this.m_netData.m_healEffect = data.healEffect;
             this.m_netData.m_frozen = data.frozen;
             this.m_netData.m_frozenOri = data.frozenOri;
+            if (this.m_netData.m_frozenType !== data.frozenType) {
+                this.updateFrozenImage = true;
+            }
+            this.m_netData.m_frozenType = data.frozenType;
             this.m_netData.m_hasteType = data.hasteType;
             this.m_netData.m_hasteSeq = data.hasteSeq;
             this.m_netData.m_actionItem = data.actionItem;
@@ -1472,8 +1479,13 @@ export class Player implements AbstractObject {
         this.bodySprite.scale.set(0.25, 0.25);
         this.bodySprite.visible = true;
 
-        if (this.m_netData.m_frozen && this.updateFrozenImage) {
-            const frozenSprites = map.getMapDef().biome.frozenSprites || [];
+        if (
+            this.m_netData.m_frozen &&
+            this.updateFrozenImage &&
+            this.m_netData.m_frozenType
+        ) {
+            const frozenDef = GameObjectDefs[this.m_netData.m_frozenType] as ExplosionDef;
+            const frozenSprites = frozenDef.frozenSprites || [];
             if (frozenSprites.length > 0) {
                 const sprite =
                     frozenSprites[Math.floor(Math.random() * frozenSprites.length)];
