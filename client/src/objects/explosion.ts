@@ -674,4 +674,26 @@ const ExplosionEffectDefs: Record<string, ExplotionDef> = {
         shakeDur: 0,
         lifetime: 1,
     },
+    tomato: {
+        burst: {
+            particle: "",
+            scale: 0.75,
+            sound: {
+                grass: "potato_01", // TODO: add sound
+                water: "frag_water_01",
+            },
+        },
+        scatter: {
+            particle: "tomato_impact",
+            count: 4,
+            speed: {
+                min: 5,
+                max: 25,
+            },
+        },
+        rippleCount: 1,
+        shakeStr: 0,
+        shakeDur: 0,
+        lifetime: 1,
+    },
 };

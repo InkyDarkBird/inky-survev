@@ -232,4 +232,18 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
         healTeam: true,
         healAmount: 7,
     },
+    explosion_tomato: {
+        type: "explosion",
+        damage: 11,
+        obstacleDamage: 1,
+        teamDamage: false,
+        rad: { min: 1.29, max: 1.3 },
+        shrapnelCount: 0,
+        shrapnelType: "",
+        explosionEffectType: "tomato",
+        decalType: "",
+        freezeAmount: 3,
+        freezeDuration: 0.5,
+        dropRandomLoot: 1,
+    },
 };
