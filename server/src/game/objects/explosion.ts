@@ -184,6 +184,10 @@ export class ExplosionBarn {
             if (explosion.type === "explosion_potato_smgshot") {
                 obj.incrementFat();
             }
+
+            if (explosion.type === "explosion_potato_lmgshot") {
+                obj.decrementViewDistance();
+            }
         }
 
         if (obj.__type === ObjectType.Obstacle) {

@@ -2072,6 +2072,8 @@ export class Player implements AbstractObject {
                 idlePose = "bullpup";
             } else if (curWeapDef.isLauncher) {
                 idlePose = "launcher";
+            } else if (curWeapDef.isMinigun) {
+                idlePose = "minigun";
             } else {
                 idlePose = curWeapDef.isDual ? "dualRifle" : "rifle";
             }

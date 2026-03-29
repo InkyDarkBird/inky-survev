@@ -914,6 +914,9 @@ export class Player extends BaseGameObject {
     fatModifier = 0;
     fatTicker = 0;
 
+    viewDistModifier = 0;
+    viewDistTicker = 0;
+
     promoteToRole(role: string) {
         const roleDef = GameObjectDefs[role] as RoleDef;
         if (!roleDef || roleDef.type !== "role") {
@@ -1881,6 +1884,15 @@ export class Player extends BaseGameObject {
             }
         }
 
+        if (this.viewDistModifier > 0) {
+            this.viewDistTicker -= dt;
+            if (this.viewDistTicker <= 0) {
+                this.viewDistModifier = 0;
+                this.viewDistTicker = 0;
+                this.zoomDirty = true;
+            }
+        }
+
         //
         // Calculate new speed, position and check for collision with obstacles
         //
@@ -2056,7 +2068,9 @@ export class Player extends BaseGameObject {
         //
 
         let finalZoom = this.scopeZoomRadius[this.scope];
-        let lowestZoom = this.scopeZoomRadius["1xscope"];
+        const lowestZoom = this.scopeZoomRadius["1xscope"];
+        finalZoom -= this.viewDistModifier;
+        finalZoom = math.max(lowestZoom, finalZoom);
 
         this.indoors = false;
 
@@ -4714,6 +4728,12 @@ export class Player extends BaseGameObject {
         if (this.fatModifier > 0.6) return;
         this.fatModifier += 0.06;
         this.recalculateScale();
+    }
+
+    decrementViewDistance() {
+        this.viewDistModifier += 1.5;
+        this.viewDistTicker = 2.5;
+        this.zoomDirty = true;
     }
 
     giveHaste(type: HasteType, duration: number): void {

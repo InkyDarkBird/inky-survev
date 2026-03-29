@@ -638,6 +638,30 @@ const ExplosionEffectDefs: Record<string, ExplotionDef> = {
         shakeDur: 0,
         lifetime: 0.5,
     },
+    potato_lmgshot: {
+        burst: {
+            particle: "",
+            scale: 0.1,
+            sound: {
+                grass: "potato_01",
+                water: "potato_02",
+                detune: 400,
+                volume: 0.5,
+            },
+        },
+        scatter: {
+            particle: "potato_smg_impact",
+            count: 1,
+            speed: {
+                min: 5,
+                max: 20,
+            },
+        },
+        rippleCount: 1,
+        shakeStr: 0,
+        shakeDur: 0,
+        lifetime: 0.3,
+    },
     bomb_iron: {
         burst: {
             particle: "explosionBomb",

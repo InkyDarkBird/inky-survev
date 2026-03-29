@@ -207,6 +207,19 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
         freezeAmount: 3,
         freezeDuration: 1,
     },
+    explosion_potato_lmgshot: {
+        type: "explosion",
+        damage: 8,
+        obstacleDamage: 1.3,
+        teamDamage: false,
+        rad: { min: 1.25, max: 1.75 },
+        shrapnelCount: 0,
+        shrapnelType: "",
+        explosionEffectType: "potato_lmgshot", // TODO: effect
+        decalType: "",
+        freezeAmount: 3,
+        freezeDuration: 0.25,
+    },
     explosion_bomb_iron: {
         type: "explosion",
         damage: 40,
