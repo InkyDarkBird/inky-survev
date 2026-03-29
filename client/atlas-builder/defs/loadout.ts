@@ -675,6 +675,8 @@ export const LoadoutAtlas: AtlasDef = {
         "player/player-mash-01.svg",
         "player/player-mash-02.svg",
         "player/player-mash-03.svg",
+        "player/player-mash-04.svg",
+        "player/player-mash-05.svg",
         "player/player-patch-01.svg",
         "player/player-patch-01po.svg",
         "player/player-patch-02.svg",
