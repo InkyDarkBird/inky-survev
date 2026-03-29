@@ -1492,16 +1492,26 @@ export class Player implements AbstractObject {
         if (map.factionMode && !outfitDef.ghillie) {
             const playerInfo = playerBarn.getPlayerInfo(this.__id);
             const teamId = playerInfo.teamId;
-            const teamSprites = ["player-patch-01.img", "player-patch-02.img"];
+
+            const teamSprites = map.potatoMode
+                ? ["player-patch-01po.img", "player-patch-02po.img"]
+                : ["player-patch-01.img", "player-patch-02.img"];
+
             const teamIdx = (teamId - 1) % teamSprites.length;
             const sprite = teamSprites[teamIdx];
-            const tint = GameConfig.teamColors[teamIdx];
             const rot = math.oriToRad(3) + Math.PI * 0.5;
+
             this.patchSprite.texture = PIXI.Texture.from(sprite);
             this.patchSprite.rotation = rot;
-            this.patchSprite.tint = tint;
             this.patchSprite.scale.set(0.25, 0.25);
             this.patchSprite.visible = true;
+
+            if (map.potatoMode) {
+                this.patchSprite.tint = 0xffffff;
+            } else {
+                const tint = GameConfig.teamColors[teamIdx];
+                this.patchSprite.tint = tint;
+            }
         } else {
             this.patchSprite.visible = false;
         }

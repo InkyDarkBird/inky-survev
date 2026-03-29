@@ -4771,6 +4771,14 @@ export class Player extends BaseGameObject {
             emote = "emote_potato";
         }
 
+        if (this.game.map.potatoMode && this.game.map.factionMode) {
+            if (this.teamId === 1) {
+                emote = "emote_tomato";
+            } else if (this.teamId === 2) {
+                emote = "emote_potato";
+            }
+        }
+
         this.game.playerBarn.addEmote(emote, this.__id);
     }
 

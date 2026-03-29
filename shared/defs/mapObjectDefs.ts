@@ -10789,11 +10789,89 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
         },
         sound: { explode: "crate_break_01" },
     } as unknown as Partial<ObstacleDef>),
+    crate_12po: createCrate({
+        collision: collider.createAabbExtents(v2.create(0, 0), v2.create(3.5, 3.5)),
+        scale: { destroy: 0.75 },
+        health: 500,
+        loot: [
+            tierLoot("tier_airdrop_rare", 2, 2, {
+                preloadGuns: true,
+            }),
+            tierLoot("tier_airdrop_uncommon", 7, 8, {
+                preloadGuns: true,
+            }),
+            tierLoot("tier_airdrop_armor", 5, 6),
+            tierLoot("tier_medical", 12, 15),
+            tierLoot("tier_airdrop_scopes", 7, 8),
+            tierLoot("tier_airdrop_outfits", 3, 4),
+            tierLoot("tier_airdrop_melee", 6, 7),
+            tierLoot("tier_airdrop_ammo", 10, 12),
+            tierLoot("tier_airdrop_throwables", 6, 8),
+        ],
+        map: { display: false },
+        img: {
+            sprite: "map-crate-12.img",
+            residue: "map-crate-res-03.img",
+        },
+        sound: { explode: "crate_break_01" },
+    } as unknown as Partial<ObstacleDef>),
+    crate_12dev: createCrate({
+        collision: collider.createAabbExtents(v2.create(0, 0), v2.create(3.5, 3.5)),
+        scale: { destroy: 0.75 },
+        health: 1100,
+        loot: [
+            tierLoot("tier_dev_guns", 20, 20, {
+                preloadGuns: true,
+            }),
+            tierLoot("tier_dev_melee", 6, 7),
+            autoLoot("snowball", 100),
+            autoLoot("bandage", 1),
+            autoLoot("smoke", 1),
+        ],
+        map: { display: false },
+        img: {
+            sprite: "map-crate-13.img",
+            residue: "map-crate-res-03.img",
+        },
+        sound: { explode: "crate_break_01" },
+    } as unknown as Partial<ObstacleDef>),
     crate_13: createCrate({
         collision: collider.createAabbExtents(v2.create(0, 0), v2.create(3.5, 3.5)),
         scale: { destroy: 0.75 },
         health: 200,
         loot: [
+            tierLoot("tier_airdrop_mythic", 3, 4, {
+                preloadGuns: true,
+            }),
+            tierLoot("tier_airdrop_rare", 5, 5, {
+                preloadGuns: true,
+            }),
+            tierLoot("tier_airdrop_armor", 6, 8),
+            tierLoot("tier_medical", 12, 15),
+            tierLoot("tier_airdrop_scopes", 6, 8),
+            tierLoot("tier_airdrop_faction_outfits", 1, 2),
+            tierLoot("tier_airdrop_melee", 2, 3),
+            tierLoot("tier_airdrop_faction_melee", 3, 3),
+            tierLoot("tier_airdrop_ammo", 10, 12),
+            tierLoot("tier_airdrop_throwables", 6, 8),
+            autoLoot("strobe", 1),
+            autoLoot("strobe", 1),
+            autoLoot("strobe", 1),
+        ],
+        map: { display: false },
+        img: {
+            sprite: "map-crate-13.img",
+            residue: "map-crate-res-03.img",
+        },
+        sound: { explode: "crate_break_01" },
+    } as unknown as Partial<ObstacleDef>),
+    crate_13po: createCrate({
+        // TODO: same as crate 12
+        collision: collider.createAabbExtents(v2.create(0, 0), v2.create(3.5, 3.5)),
+        scale: { destroy: 0.75 },
+        health: 200,
+        loot: [
+            tierLoot("tier_airdrop_potato", 2, 2),
             tierLoot("tier_airdrop_mythic", 3, 4, {
                 preloadGuns: true,
             }),
@@ -10968,6 +11046,34 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
         destroyType: "crate_12",
         explodeParticle: "airdropCrate04",
     } as unknown as Partial<ObstacleDef>),
+    airdrop_crate_03po: createAirdrop({
+        collision: collider.createAabbExtents(v2.create(0, 0), v2.create(4, 4)),
+        button: {
+            useImg: "map-airdrop-04.img",
+            useParticle: "airdropCrate03",
+            sound: { on: "airdrop_open_01", off: "" },
+        },
+        img: {
+            sprite: "map-airdrop-03.img",
+            residue: "none",
+        },
+        destroyType: "crate_12po",
+        explodeParticle: "airdropCrate04",
+    } as unknown as Partial<ObstacleDef>),
+    airdrop_crate_03dev: createAirdrop({
+        collision: collider.createAabbExtents(v2.create(0, 0), v2.create(4, 4)),
+        button: {
+            useImg: "map-airdrop-04.img",
+            useParticle: "airdropCrate03",
+            sound: { on: "airdrop_open_01", off: "" },
+        },
+        img: {
+            sprite: "map-airdrop-03.img",
+            residue: "none",
+        },
+        destroyType: "crate_12dev",
+        explodeParticle: "airdropCrate04",
+    } as unknown as Partial<ObstacleDef>),
     airdrop_crate_04: createAirdrop({
         collision: collider.createAabbExtents(v2.create(0, 0), v2.create(4, 4)),
         button: {
@@ -10980,6 +11086,20 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
             residue: "none",
         },
         destroyType: "crate_13",
+        explodeParticle: "airdropCrate04",
+    } as unknown as Partial<ObstacleDef>),
+    airdrop_crate_04po: createAirdrop({
+        collision: collider.createAabbExtents(v2.create(0, 0), v2.create(4, 4)),
+        button: {
+            useImg: "map-airdrop-04.img",
+            useParticle: "airdropCrate03",
+            sound: { on: "airdrop_open_01", off: "" },
+        },
+        img: {
+            sprite: "map-airdrop-03.img",
+            residue: "none",
+        },
+        destroyType: "crate_13po",
         explodeParticle: "airdropCrate04",
     } as unknown as Partial<ObstacleDef>),
     airdrop_crate_01sv: createAirdrop({
@@ -11616,8 +11736,22 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
         loot: [autoLoot("scout_elite", 1), tierLoot("tier_islander_outfit", 1, 1)],
     }),
     potato_01: createPotato({}),
+    potato_01f: createPotato({
+        terrain: { grass: true, beach: true, riverShore: false },
+        teamId: 2,
+    }),
     potato_02: createPotato({ img: { sprite: "map-potato-02.img" } }),
+    potato_02f: createPotato({
+        terrain: { grass: true, beach: true, riverShore: false },
+        img: { sprite: "map-potato-02.img" },
+        teamId: 2,
+    }),
     potato_03: createPotato({ img: { sprite: "map-potato-03.img" } }),
+    potato_03f: createPotato({
+        terrain: { grass: true, beach: true, riverShore: false },
+        img: { sprite: "map-potato-03.img" },
+        teamId: 2,
+    }),
     tomato_01: createTomato({
         terrain: { grass: true, beach: true, riverShore: false },
         teamId: 1,
@@ -18035,6 +18169,7 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
             type: "building",
             map: { display: true, color: 0x317120, scale: 1 },
             terrain: { grass: true, beach: false },
+            teamId: 2,
             mapObstacleBounds: [
                 collider.createAabbExtents(v2.create(0, -1), v2.create(17, 15)),
             ],
