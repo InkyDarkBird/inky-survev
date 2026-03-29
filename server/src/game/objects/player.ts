@@ -1065,6 +1065,16 @@ export class Player extends BaseGameObject {
         // we first need to build a list of the new perks to add
         const newPerks = new Set<string>();
         if (roleDef.perks) {
+            // client can only show 4 perks in the UI
+            // if this role has 4 or more perks, drop all our droppable perks
+            if (roleDef.perks.length >= 4) {
+                for (const perk of this.perks) {
+                    if (perk.droppable) {
+                        this.dropLoot(perk.type);
+                        this.removePerk(perk.type);
+                    }
+                }
+            }
             for (let i = 0; i < roleDef.perks.length; i++) {
                 const perkOrPerkFunc = roleDef.perks[i];
                 const perkType =
@@ -4072,6 +4082,14 @@ export class Player extends BaseGameObject {
                 const perkSlotType = this.perks.find(
                     (p) => p.droppable || p.replaceOnDeath === "halloween_mystery",
                 )?.type;
+
+                // The client can only show 4 perks in the UI.
+                // If the player already has 4 or more perks, they cannot pick up a new one.
+                if (!perkSlotType && this.perks.length >= 4) {
+                    amountLeft = 1;
+                    pickupMsg.type = net.PickupMsgType.MaxPerks;
+                    break;
+                }
                 if (perkSlotType) {
                     amountLeft = 1;
                     lootToAdd = isMistery ? "" : perkSlotType;

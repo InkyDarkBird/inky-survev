@@ -275,6 +275,7 @@
   "game-item-already-equipped": "Item already equipped!",
   "game-better-item-equipped": "Better item equipped!",
   "game-gun-cannot-fire": "Gun cannot be fired here!",
+  "game-max-perks": "Maximum perks equipped!",
   "game-waiting-for-new-leader": "Waiting for new leader",
   "game-waiting-for-hunted": "Searching for the Hunted",
   "game-play-new-game": "Play New Game",

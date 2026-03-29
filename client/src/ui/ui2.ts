@@ -1598,6 +1598,7 @@ export class UiManager2 {
             [PickupMsgType.AlreadyEquipped]: "game-item-already-equipped",
             [PickupMsgType.BetterItemEquipped]: "game-better-item-equipped",
             [PickupMsgType.GunCannotFire]: "game-gun-cannot-fire",
+            [PickupMsgType.MaxPerks]: "game-max-perks",
         };
         const key = typeMap[type] || typeMap[PickupMsgType.Full];
         return this.localization.translate(key);
