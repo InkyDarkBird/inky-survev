@@ -918,10 +918,15 @@ export class Player extends BaseGameObject {
     viewDistTicker = 0;
 
     promoteToRole(role: string) {
-        const roleDef = GameObjectDefs[role] as RoleDef;
+        let roleDef = GameObjectDefs[role] as RoleDef;
         if (!roleDef || roleDef.type !== "role") {
             this.game.logger.warn(`Invalid role type: ${role}`);
             return;
+        }
+
+        const roleOverride = this.game.map.mapDef.gameConfig.roles?.roleOverrides?.[role];
+        if (roleOverride) {
+            roleDef = util.mergeDeep({}, roleDef, roleOverride);
         }
 
         if (role === "leader") {
