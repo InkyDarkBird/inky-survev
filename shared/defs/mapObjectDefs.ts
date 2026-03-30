@@ -12512,7 +12512,7 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
             tint: 0xb1b1b1,
         },
         loot: [
-            tierLoot("tier_surviv", 2, 3), 
+            tierLoot("tier_surviv", 2, 3),
             autoLoot("mosin", 1),
             autoLoot("4xscope", 1),
             autoLoot("helmet02", 1),
