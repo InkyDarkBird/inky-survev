@@ -107,50 +107,6 @@ const mapDef: PartialMapDef = {
         },
         roles: {
             roleOverrides: {
-                leader: {
-                    defaultItems: {
-                        weapons: [
-                            (teamcolor: TeamColor) =>
-                                getTeamWeapon(
-                                    {
-                                        [TeamColor.Red]: util.weightedRandom([
-                                            {
-                                                type: "m1014",
-                                                ammo: 8,
-                                                fillInv: true,
-                                                weight: 0.5,
-                                            },
-                                            {
-                                                type: "potato_lmg",
-                                                ammo: 8,
-                                                fillInv: true,
-                                                weight: 0.5,
-                                            },
-                                        ]),
-                                        [TeamColor.Blue]: {
-                                            type: "an94",
-                                            ammo: 45,
-                                            fillInv: true,
-                                        },
-                                    },
-                                    teamcolor,
-                                ),
-                            { type: "flare_gun", ammo: 1 },
-                            (teamcolor: TeamColor) =>
-                                getTeamWeapon(
-                                    {
-                                        [TeamColor.Red]: {
-                                            type: "machete_taiga",
-                                            ammo: 0,
-                                        },
-                                        [TeamColor.Blue]: { type: "kukri_trad", ammo: 0 },
-                                    },
-                                    teamcolor,
-                                ),
-                            { type: "", ammo: 0 },
-                        ],
-                    },
-                },
                 lieutenant: {
                     defaultItems: {
                         weapons: [
