@@ -9927,6 +9927,16 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
             autoLoot("mirv", 1),
         ],
     }),
+    barrel_01f: createBarrel({
+        img: { tint: 0xc9c9c9 },
+        loot: [
+            tierLoot("tier_surviv", 2, 3),
+            autoLoot("chest02", 1),
+            autoLoot("mirv", 2),
+            autoLoot("mirv", 2),
+            autoLoot("frag", 6),
+        ],
+    }),
     barrel_01bd: createBarrel({
         explosion: "",
     }),
@@ -12089,6 +12099,18 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
         img: { tint: 0xe5e5e5 },
         loot: [tierLoot("tier_surviv", 2, 3), autoLoot("groza", 1)],
     }),
+    stone_02f: createStone({
+        map: { display: false },
+        img: { tint: 0xe5e5e5 },
+        loot: [
+            tierLoot("tier_surviv", 1, 1),
+            autoLoot("ak47", 1),
+            autoLoot("helmet02", 1),
+            autoLoot("chest02", 1),
+            autoLoot("bandage", 5),
+            autoLoot("2xscope", 1),
+        ],
+    }),
     stone_03: createRiverStone({}),
     stone_03b: createRiverStone({
         img: {
@@ -12489,7 +12511,12 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
             zIdx: 801,
             tint: 0xb1b1b1,
         },
-        loot: [tierLoot("tier_surviv", 2, 3), autoLoot("mosin", 1)],
+        loot: [
+            tierLoot("tier_surviv", 2, 3), 
+            autoLoot("mosin", 1),
+            autoLoot("4xscope", 1),
+            autoLoot("helmet02", 1),
+        ],
     } as unknown as Partial<ObstacleDef>),
     // woods cache
     tree_03w: createTree({
@@ -14923,6 +14950,24 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
         ],
         map: { displayType: "stone_01" },
     }),
+    cache_01f: createCache({
+        mapObjects: [
+            {
+                type: "stone_02f",
+                pos: v2.create(0, 0),
+                scale: 1,
+                ori: 0,
+            },
+            {
+                type: "decal_initiative_01",
+                pos: v2.create(0, 0),
+                scale: 1,
+                ori: 0,
+                inheritOri: false,
+            },
+        ],
+        map: { displayType: "stone_01" },
+    }),
     cache_02: createCache({
         mapObjects: [
             {
@@ -15215,6 +15260,24 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
         mapObjects: [
             {
                 type: "barrel_01w",
+                pos: v2.create(0, 0),
+                scale: 1,
+                ori: 0,
+            },
+            {
+                type: "decal_initiative_01",
+                pos: v2.create(0, 0),
+                scale: 1.1,
+                ori: 0,
+                inheritOri: false,
+            },
+        ],
+        map: { displayType: "barrel_01" },
+    }),
+    cache_07f: createCache({
+        mapObjects: [
+            {
+                type: "barrel_01f",
                 pos: v2.create(0, 0),
                 scale: 1,
                 ori: 0,
