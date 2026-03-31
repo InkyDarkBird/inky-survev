@@ -11776,7 +11776,10 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
         hitParticle: "tomatoChip_02",
         explodeParticle: "tomatoBreak_02",
         terrain: { grass: true, beach: true, riverShore: false },
-        img: { sprite: "map-tomato-03.img" },
+        img: {
+            sprite: "map-tomato-03.img",
+            residue: "map-tomato-res-02.img",
+        },
         teamId: 1,
     }),
     egg_01: createEgg({

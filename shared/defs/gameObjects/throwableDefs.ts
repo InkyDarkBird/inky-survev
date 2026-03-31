@@ -794,7 +794,7 @@ export const ThrowableDefs: Record<string, ThrowableDef> = {
             deploy: "frag_deploy_01",
         },
         trail: {
-            maxLength: 120,
+            maxLength: 80,
             width: 2,
             alpha: 1,
             tint: 0xad6d25,

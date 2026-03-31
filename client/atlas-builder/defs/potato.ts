@@ -21,5 +21,6 @@ export const PotatoAtlas: AtlasDef = {
         "map/map-tomato-02.svg",
         "map/map-tomato-03.svg",
         "map/map-tomato-res-01.svg",
+        "map/map-tomato-res-02.svg",
     ],
 };
