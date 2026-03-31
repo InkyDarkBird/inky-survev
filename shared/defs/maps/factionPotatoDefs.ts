@@ -15,7 +15,7 @@ const mapDef: PartialMapDef = {
     desc: {
         name: "Potato vs Tomato",
         icon: "img/gui/star.svg",
-        buttonCss: "btn-faction-potato-mode",
+        buttonCss: "btn-mode-faction-potato",
         buttonText: "50v50",
         backgroundImg: "img/main_splash_0_7_0.png",
     },

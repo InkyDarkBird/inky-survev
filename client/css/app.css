@@ -949,18 +949,6 @@ a:active {
   }
 }
 
-.btn-faction-potato-mode {
-  animation-name: potato-pulse;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  background-repeat: no-repeat;
-  background-size: 35px;
-  background-image: url(/img/gui/star.svg);
-  border-bottom: 4px solid #563619 !important;
-  box-shadow: inset 0 -2px #563619 !important;
-  height: 41px;
-}
-
 @media (max-width: 850px), (max-width: 900px) and (min-resolution: 3dppx) {
   .btn-faction-mode {
     background-position: 0 2px;
@@ -968,21 +956,6 @@ a:active {
     border-bottom: 4px solid #563619;
     box-shadow: none;
     height: 28px;
-  }
-}
-
-.btn-team-queue-faction-potato-mode {
-  background-repeat: no-repeat;
-  background-size: 35px;
-  background-image: url(/img/gui/star.svg);
-  text-indent: 18px;
-}
-
-@media (max-width: 850px), (max-width: 900px) and (min-resolution: 3dppx) {
-  .btn-team-queue-faction-potato-mode {
-    background-position: 0 2px;
-    background-size: 22px;
-    text-indent: 14px;
   }
 }
 
@@ -3427,6 +3400,46 @@ a:active {
     -webkit-box-shadow: 0 0 9px #007eff;
   }
 }
+
+.btn-mode-faction-potato {
+  animation-name: faction-potato-pulse;
+  background-image: url(../img/gui/star.svg);
+  border-bottom: 4px solid #563619;
+}
+
+.btn-team-queue-mode-faction-potato {
+  background-repeat: no-repeat;
+  background-size: 35px;
+  background-image: url(/img/gui/star.svg);
+  text-indent: 18px;
+}
+
+@media (max-width: 850px), (max-width: 900px) and (min-resolution: 3dppx) {
+  .btn-team-queue-mode-faction-potato {
+    background-position: 0 2px;
+    background-size: 22px;
+    text-indent: 14px;
+  }
+}
+
+@keyframes faction-potato-pulse {
+  from {
+    background-color: #8f5827;
+    border-bottom-color: #563619;
+    -webkit-box-shadow: 0 0 9px #8f5827;
+  }
+  50% {
+    background-color: #c00;
+    border-bottom-color: #8d0000;
+    -webkit-box-shadow: 0 0 18px #c00;
+  }
+  to {
+    background-color: #8f5827;
+    border-bottom-color: #563619;
+    -webkit-box-shadow: 0 0 9px #8f5827;
+  }
+}
+
 .btn-mode-savannah {
   animation-name: savannah-pulse;
   border-bottom: 4px solid #947c1c;
