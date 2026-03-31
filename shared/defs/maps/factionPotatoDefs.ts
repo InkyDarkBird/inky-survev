@@ -92,7 +92,7 @@ const mapDef: PartialMapDef = {
         atlases: ["gradient", "loadout", "shared", "faction", "potato"],
     },
     biome: {
-        particles: { camera: "falling_potato" },
+        particles: { camera: "falling_pvt" },
     },
     gameMode: {
         maxPlayers: 100,

@@ -2648,6 +2648,30 @@ const ParticleDefs: Record<string, ParticleDef> = {
             return util.rgbToInt(util.hsvToRgb(0, 0, util.random(0.9, 0.95)));
         },
     },
+    potato_factions: {
+        image: ["part-potato-02.img", "part-tomato-02.img"],
+        life: new Range(10, 15),
+        drag: new Range(0, 0),
+        rotVel: new Range(Math.PI * 0.25, Math.PI * 0.5),
+        scale: {
+            start: new Range(0.13, 0.15),
+            end: new Range(0.08, 0.11),
+            lerp: new Range(0, 1),
+        },
+        alpha: {
+            start: 1,
+            end: 0,
+            lerp: new Range(0.9, 1),
+        },
+        alphaIn: {
+            start: 0,
+            end: 1,
+            lerp: new Range(0, 0.05),
+        },
+        color: function () {
+            return util.rgbToInt(util.hsvToRgb(0, 0, util.random(0.9, 0.95)));
+        },
+    },
     snow: {
         image: ["part-snow-01.img"],
         life: new Range(10, 15),
@@ -3255,6 +3279,16 @@ const EmitterDefs: Record<string, EmitterDef> = {
     },
     falling_potato: {
         particle: "potato",
+        rate: new Range(0.2, 0.24),
+        radius: 120,
+        speed: new Range(2, 3),
+        angle: Math.PI * 0.2,
+        rot: new Range(0, Math.PI * 2),
+        maxCount: Number.MAX_VALUE,
+        zOrd: 999,
+    },
+    falling_pvt: {
+        particle: "potato_factions",
         rate: new Range(0.2, 0.24),
         radius: 120,
         speed: new Range(2, 3),
