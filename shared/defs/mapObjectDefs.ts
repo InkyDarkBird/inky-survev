@@ -1305,7 +1305,7 @@ function createTomato<T extends ObstacleDef>(e: Partial<T>): T {
         sound: {
             bullet: "organic_hit",
             punch: "organic_hit",
-            explode: "pumpkin_break_01", // TODO: sound
+            explode: "tomato_break_01",
             enter: "none",
         },
     };
@@ -11769,6 +11769,7 @@ export const MapObjectDefs: Record<string, MapObjectDef> = {
     tomato_02: createTomato({
         terrain: { grass: true, beach: true, riverShore: false },
         img: { sprite: "map-tomato-02.img" },
+        sound: { explode: "tomato_break_02" },
         teamId: 1,
     }),
     tomato_03: createTomato({

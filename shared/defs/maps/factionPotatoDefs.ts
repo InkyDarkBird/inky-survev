@@ -22,8 +22,11 @@ const mapDef: PartialMapDef = {
     assets: {
         audio: [
             { name: "pumpkin_break_01", channel: "sfx" },
+            { name: "tomato_break_01", channel: "sfx" },
+            { name: "tomato_break_02", channel: "sfx" },
             { name: "potato_01", channel: "sfx" },
             { name: "potato_02", channel: "sfx" },
+            { name: "tomato_01", channel: "sfx" },
             { name: "potato_pickup_01", channel: "ui" },
             {
                 name: "lt_assigned_01",

@@ -222,7 +222,7 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
         rad: { min: 1.25, max: 1.75 },
         shrapnelCount: 0,
         shrapnelType: "",
-        explosionEffectType: "potato_lmgshot", // TODO: effect
+        explosionEffectType: "potato_lmgshot",
         decalType: "",
         freezeDuration: 0.25,
         frozenSprites: ["player-mash-01.img", "player-mash-02.img", "player-mash-03.img"],

@@ -1143,6 +1143,16 @@ const Sounds: Record<string, Record<string, SoundDef>> = {
             volume: 1,
             preload: false,
         },
+        tomato_break_01: {
+            path: "audio/sfx/tomato_break_01.mp3",
+            volume: 1,
+            preload: false,
+        },
+        tomato_break_02: {
+            path: "audio/sfx/tomato_break_01.mp3",
+            volume: 1,
+            preload: false,
+        },
         ceramic_break_01: {
             path: "audio/sfx/ceramic_break_01.mp3",
             volume: 1,
@@ -1331,6 +1341,11 @@ const Sounds: Record<string, Record<string, SoundDef>> = {
         },
         coconut_01: {
             path: "audio/sfx/coconut_01.mp3",
+            volume: 1,
+            preload: false,
+        },
+        tomato_01: {
+            path: "audio/sfx/tomato_01.mp3",
             volume: 1,
             preload: false,
         },

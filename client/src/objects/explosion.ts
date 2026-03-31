@@ -703,7 +703,7 @@ const ExplosionEffectDefs: Record<string, ExplotionDef> = {
             particle: "",
             scale: 0.75,
             sound: {
-                grass: "potato_01", // TODO: add sound
+                grass: "tomato_01", // TODO: add sound
                 water: "frag_water_01",
             },
         },
