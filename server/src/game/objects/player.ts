@@ -4134,6 +4134,8 @@ export class Player extends BaseGameObject {
             const weapon = this.weapons[i];
             if (!weapon.type) continue;
             if (weapon.type == "fists") continue;
+            const def = GameObjectDefs[weapon.type] as GunDef;
+            if (def.noDrop) continue;
             playerLootTypes.push(weapon.type);
         }
 
