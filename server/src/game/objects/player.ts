@@ -1510,11 +1510,11 @@ export class Player extends BaseGameObject {
                 const flareGunIndex = this.weapons.findIndex(
                     (w) => w.type === "flare_gun" || w.type === "flare_gun_dual",
                 );
+                this.hasFiredFlare = true;
+                this.flareTimer = 0;
                 if (flareGunIndex !== -1) {
                     this.weaponManager.setCurWeapIndex(flareGunIndex);
                     this.weaponManager.fireWeapon(false, true);
-                    this.hasFiredFlare = true;
-                    this.flareTimer = 0;
                     // go back to melee if we fired while downed lol
                     if (this.downed) {
                         this.weaponManager.setCurWeapIndex(GameConfig.WeaponSlot.Melee);
