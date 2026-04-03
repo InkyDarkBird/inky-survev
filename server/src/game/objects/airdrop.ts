@@ -34,6 +34,7 @@ export class AirdropBarn {
             const airdrop = this.airdrops[i];
             if (airdrop.landed) {
                 this.airdrops.splice(i, 1);
+                airdrop.destroy();
                 i--;
             }
         }
