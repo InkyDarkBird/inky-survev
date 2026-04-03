@@ -1,6 +1,7 @@
 import { GameObjectDefs } from "../../../../shared/defs/gameObjectDefs";
 import type { ExplosionDef } from "../../../../shared/defs/gameObjects/explosionsDefs";
 import { ObjectType } from "../../../../shared/net/objectSerializeFns";
+import { coldet } from "../../../../shared/utils/coldet";
 import { collider } from "../../../../shared/utils/collider";
 import { math } from "../../../../shared/utils/math";
 import { assert, util } from "../../../../shared/utils/util";
@@ -53,6 +54,8 @@ export class ExplosionBarn {
         const objects = this.game.grid.intersectCollider(coll);
         const damagedObjects = new Map<number, boolean>();
 
+        const centerCircle = collider.createCircle(explosion.pos, 0.01);
+
         for (let angle = -Math.PI; angle < Math.PI; angle += 0.1) {
             // All objects that collided with this line
             const lineCollisions: Array<LineCollision> = [];
@@ -71,6 +74,16 @@ export class ExplosionBarn {
                     obj.__type === ObjectType.Obstacle ||
                     obj.__type === ObjectType.Loot
                 ) {
+                    // if the explosion center is inside the object deal max damage
+                    if (coldet.test(obj.collider, centerCircle)) {
+                        lineCollisions.push({
+                            pos: explosion.pos,
+                            obj,
+                            distance: 0,
+                            dir: v2.neg(v2.normalize(v2.sub(explosion.pos, obj.pos))),
+                        });
+                        continue;
+                    }
                     // check if the object hitbox collides with a line from the explosion center to the explosion max distance
                     const intersection = collider.intersectSegment(
                         obj.collider,
