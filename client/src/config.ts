@@ -23,6 +23,7 @@ export const debugToolsConfig = {
     godMode: false,
     teleportToPings: false,
     moveObjs: false,
+    preventGameStart: false,
 };
 
 export const debugRenderConfig = {

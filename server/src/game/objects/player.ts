@@ -4583,6 +4583,8 @@ export class Player extends BaseGameObject {
 
         this.debug.moveObjMode.enabled = msg.moveObjs;
 
+        this.game.preventStart = msg.preventGameStart;
+
         if (msg.spawnLootType) {
             const def = GameObjectDefs[msg.spawnLootType];
             if (def && "lootImg" in def) {

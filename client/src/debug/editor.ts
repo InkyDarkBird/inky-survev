@@ -247,6 +247,9 @@ export class Editor {
             folder.addBinding(this.toolParams, "moveObjs", {
                 label: "Move Objects",
             });
+            folder.addBinding(this.toolParams, "preventGameStart", {
+                label: "Prevent Game Start",
+            });
             folder.on("change", () => {
                 this.sendMsg = true;
                 this.config.set("debugTools", this.toolParams);
@@ -415,6 +418,7 @@ export class Editor {
         msg.teleportToPings = this.toolParams.teleportToPings;
         msg.godMode = this.toolParams.godMode;
         msg.moveObjs = this.toolParams.moveObjs;
+        msg.preventGameStart = this.toolParams.preventGameStart;
 
         return msg;
     }
