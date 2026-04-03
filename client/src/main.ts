@@ -428,7 +428,10 @@ export class Application {
     }
 
     setPlayLockout(lock: boolean) {
-        const delay = lock ? 0 : 1000;
+        let delay = lock ? 0 : 1000;
+        if (IS_DEV) {
+            delay = 0;
+        }
         this.playButtons
             .stop()
             .delay(delay)
@@ -436,7 +439,7 @@ export class Application {
                 {
                     opacity: lock ? 0.5 : 1,
                 },
-                250,
+                IS_DEV ? 0 : 250,
             );
         this.playLoading
             .stop()
@@ -446,7 +449,7 @@ export class Application {
                     opacity: lock ? 1 : 0,
                 },
                 {
-                    duration: 250,
+                    duration: IS_DEV ? 0 : 250,
                     start: () => {
                         this.playLoading.css({
                             "pointer-events": lock ? "initial" : "none",
@@ -642,6 +645,11 @@ export class Application {
             }
             this.findGameTime = Date.now();
             this.findGameAttempts++;
+
+            // the delay is annoying on dev
+            if (IS_DEV) {
+                delay = 0;
+            }
 
             const version = GameConfig.protocolVersion;
             let region = this.config.get("region")!;
