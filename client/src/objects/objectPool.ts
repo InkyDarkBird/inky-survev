@@ -113,7 +113,11 @@ export class Creator {
         return obj;
     }
 
-    m_updateObjPart(id: number, data: ObjectsPartialData[ObjectType], ctx: Ctx) {
+    m_updateObjPart(
+        id: number,
+        data: ObjectsPartialData[ObjectType] & { __type: ObjectType },
+        ctx: Ctx,
+    ) {
         const obj = this.m_getObjById(id);
         if (obj) {
             obj.m_updateData(data, false, false, ctx);

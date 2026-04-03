@@ -19,6 +19,7 @@ import { Editor } from "./debug/editor";
 
 import { device } from "./device";
 import { EmoteBarn } from "./emote";
+import { errorLogManager } from "./errorLogs";
 import { Gas } from "./gas";
 import { helpers } from "./helpers";
 import { type InputHandler, Key } from "./input";
@@ -1149,6 +1150,19 @@ export class Game {
         // Update partial objects
         for (let i = 0; i < msg.partObjects.length; i++) {
             const obj = msg.partObjects[i];
+
+            const clientType = this.m_objectCreator.m_getObjById(obj.__id)?.__type ?? 0;
+            if (obj.__type !== clientType) {
+                const errString = `updateObjPart: type mismatch, received ${obj.__type}, client has ${clientType};`;
+                errorLogManager.logError(errString, {
+                    id: obj.__id,
+                    ids: Object.keys(this.m_objectCreator.m_idToObj),
+                    msg,
+                });
+                console.error(errString);
+                continue;
+            }
+
             this.m_objectCreator.m_updateObjPart(obj.__id, obj, ctx);
         }
         this.m_spectating = this.m_activeId != this.m_localId;
