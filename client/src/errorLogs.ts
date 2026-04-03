@@ -30,7 +30,7 @@ class ErrorLog {
                   parent: string;
                   child: unknown;
               }
-            | { error: string },
+            | { error: string; data?: unknown },
     ) {
         if (!this.enabled) return;
 
@@ -69,8 +69,8 @@ class ErrorLog {
         }
     }
 
-    logError(error: string) {
-        this.store("errorLog", { error });
+    logError(error: string, data?: unknown) {
+        this.store("errorLog", { error, data });
     }
 }
 
