@@ -352,8 +352,8 @@ export class Application {
                 }
                 if (errMsg) {
                     this.showErrorModal(errMsg);
+                    console.warn("Quitting", errMsg);
                 }
-                console.error("Quitting", errMsg);
                 SDK.gamePlayStop();
             };
             this.game = new Game(
