@@ -320,6 +320,8 @@ export abstract class BaseGameObject {
         }
         this.game.grid.remove(this as unknown as GameObject);
         this.game.objectRegister.deletedObjs.push(this as unknown as GameObject);
+        this.game.objectRegister.dirtyPart[this.__id] = 0;
+        this.game.objectRegister.dirtyFull[this.__id] = 0;
         this.destroyed = true;
     }
 }
