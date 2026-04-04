@@ -115,6 +115,8 @@ export class Game {
 
     profiler = new Profiler();
 
+    debugSpeedMulti = 1;
+
     constructor(
         id: string,
         config: ServerGameConfig,
@@ -179,6 +181,8 @@ export class Game {
         const now = performance.now();
         if (!this.now) this.now = now;
         dt ??= math.clamp((now - this.now) / 1000, 0.001, 1 / 8);
+
+        dt *= this.debugSpeedMulti;
 
         this.now = now;
 

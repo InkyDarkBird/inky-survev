@@ -108,9 +108,14 @@ export class Editor {
         const addSlider = (
             key: keyof Editor["toolParams"],
             enabledKey: keyof Editor["toolParams"],
+            expanded = true,
+            min = 1,
+            max = 255,
+            step = 1,
         ) => {
             const folder = tools.addFolder({
                 title: key,
+                expanded,
             });
             folder.on("change", () => {
                 this.sendMsg = true;
@@ -123,13 +128,15 @@ export class Editor {
 
             return folder.addBinding(this.toolParams, key, {
                 label: `${key.charAt(0).toUpperCase()}${key.substring(1)}`,
-                min: 1,
-                max: 255,
-                step: 1,
+                min,
+                max,
+                step,
             });
         };
         this.zoomBind = addSlider("zoom", "zoomEnabled");
         addSlider("speed", "speedEnabled");
+
+        addSlider("gameSpeed", "gameSpeedEnabled", false, 0.01, 10, 0.01);
 
         // Loot
         {
@@ -402,6 +409,9 @@ export class Editor {
 
         msg.speedEnabled = this.toolParams.speedEnabled;
         msg.speed = this.toolParams.speed;
+
+        msg.gameSpeedEnabled = this.toolParams.gameSpeedEnabled;
+        msg.gameSpeed = this.toolParams.gameSpeed;
 
         msg.loadNewMap = this.loadNewMap;
         msg.newMapSeed = this.toolParams.mapSeed;

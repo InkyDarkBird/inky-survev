@@ -4571,6 +4571,8 @@ export class Player extends BaseGameObject {
         this.debug.speedEnabled = msg.speedEnabled;
         this.debug.speed = math.clamp(msg.speed, 1, 10000);
 
+        this.game.debugSpeedMulti = msg.gameSpeedEnabled ? msg.gameSpeed : 1;
+
         // only accept ground or underground
         if (msg.toggleLayer) {
             this.layer = this.layer > 0 ? 0 : 1;

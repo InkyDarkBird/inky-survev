@@ -14,6 +14,9 @@ export const debugToolsConfig = {
     speedEnabled: false,
     speed: GameConfig.player.moveSpeed,
 
+    gameSpeedEnabled: false,
+    gameSpeed: 1,
+
     mapSeed: 0,
 
     loot: "",

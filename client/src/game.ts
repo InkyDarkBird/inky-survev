@@ -416,6 +416,9 @@ export class Game {
         let debug: DebugRenderOpts;
         if (IS_DEV) {
             debug = this.m_config.get("debugRenderer")!;
+            dt *= this.editor.toolParams.gameSpeedEnabled
+                ? this.editor.toolParams.gameSpeed
+                : 1;
         } else {
             debug = {} as DebugRenderOpts;
         }

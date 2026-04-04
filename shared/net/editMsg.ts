@@ -7,6 +7,9 @@ export class EditMsg implements AbstractMsg {
     speedEnabled = false;
     speed = 0;
 
+    gameSpeedEnabled = false;
+    gameSpeed = 1;
+
     loadNewMap = false;
     newMapSeed = 0;
 
@@ -31,6 +34,11 @@ export class EditMsg implements AbstractMsg {
         s.writeBoolean(this.speedEnabled);
         if (this.speedEnabled) {
             s.writeFloat32(this.speed);
+        }
+
+        s.writeBoolean(this.gameSpeedEnabled);
+        if (this.gameSpeedEnabled) {
+            s.writeFloat32(this.gameSpeed);
         }
 
         s.writeBoolean(this.loadNewMap);
@@ -61,6 +69,11 @@ export class EditMsg implements AbstractMsg {
         this.speedEnabled = s.readBoolean();
         if (this.speedEnabled) {
             this.speed = s.readFloat32();
+        }
+
+        this.gameSpeedEnabled = s.readBoolean();
+        if (this.gameSpeedEnabled) {
+            this.gameSpeed = s.readFloat32();
         }
 
         this.loadNewMap = s.readBoolean();
