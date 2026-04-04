@@ -216,7 +216,7 @@ export const ExplosionDefs: Record<string, ExplosionDef> = {
     },
     explosion_potato_lmgshot: {
         type: "explosion",
-        damage: 8,
+        damage: 8.5,
         obstacleDamage: 1.3,
         teamDamage: false,
         rad: { min: 1.25, max: 1.75 },
