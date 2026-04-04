@@ -918,6 +918,8 @@ export class Player extends BaseGameObject {
     viewDistModifier = 0;
     viewDistTicker = 0;
 
+    timeInsideGas = 0;
+
     promoteToRole(role: string) {
         let roleDef = GameObjectDefs[role] as RoleDef;
         if (!roleDef || roleDef.type !== "role") {
@@ -1684,16 +1686,27 @@ export class Player extends BaseGameObject {
             );
         }
 
-        if (this.game.gas.doDamage && this.game.gas.isInGas(this.pos)) {
-            this.damage({
-                amount: this.disconnected ? 22 : this.game.gas.damage,
-                damageType: GameConfig.DamageType.Gas,
-                dir: this.dir,
-            });
-            // don't continue the update if we died
-            if (this.dead) {
-                return;
+        if (this.game.gas.isInGas(this.pos)) {
+            if (this.game.gas.circleIdx > 2) {
+                this.timeInsideGas += dt;
             }
+
+            if (this.game.gas.doDamage) {
+                let damage = this.disconnected ? 22 : this.game.gas.damage;
+                const damageMulti = 1 + this.timeInsideGas * 0.025;
+
+                this.damage({
+                    amount: damage * damageMulti,
+                    damageType: GameConfig.DamageType.Gas,
+                    dir: this.dir,
+                });
+                // don't continue the update if we died
+                if (this.dead) {
+                    return;
+                }
+            }
+        } else {
+            this.timeInsideGas = 0;
         }
 
         if (this.reloadAgain && this.actionType !== GameConfig.Action.Revive) {
