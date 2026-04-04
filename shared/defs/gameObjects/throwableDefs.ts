@@ -929,8 +929,8 @@ export const ThrowableDefs: Record<string, ThrowableDef> = {
         rad: 1,
         throwPhysics: {
             playerVelMult: 0,
-            velZ: 3.75,
-            speed: 60,
+            velZ: 3.35,
+            speed: 55,
             spinVel: 10 * Math.PI,
             spinDrag: 1,
             fixedCollisionHeight: 0.25,
