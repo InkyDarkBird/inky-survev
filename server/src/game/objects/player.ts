@@ -3558,6 +3558,9 @@ export class Player extends BaseGameObject {
                 case GameConfig.Input.EquipThrowable:
                     if (this.curWeapIdx === GameConfig.WeaponSlot.Throwable) {
                         this.weaponManager.throwThrowable(true);
+                        if (this.animType === GameConfig.Anim.Cook) {
+                            this.cancelAnim();
+                        }
                         this.weaponManager.showNextThrowable();
                     } else {
                         this.weaponManager.setCurWeapIndex(
