@@ -48,7 +48,7 @@ class ErrorLog {
             },
             body: JSON.stringify({
                 loc,
-                ...data,
+                data,
             }),
         });
     }

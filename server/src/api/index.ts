@@ -185,34 +185,32 @@ app.post("/api/find_game", validateParams(zFindGameBody), async (c) => {
     });
 });
 
-app.post(
-    "/api/report_error",
-    rateLimitMiddleware(5, 60 * 1000),
-    validateParams(z.object({ loc: z.string(), error: z.any(), data: z.any() })),
-    (c) => {
-        const content = c.req.valid("json");
-        if (content.error) {
-            try {
-                content.error = JSON.parse(content.error);
-            } catch {}
-        }
+app.post("/api/report_error", rateLimitMiddleware(5, 60 * 1000), async (c) => {
+    const content = await c.req.json();
+    if ("error" in content && typeof content.error === "string") {
+        try {
+            content.error = JSON.parse(content.error);
+        } catch {}
+    }
 
-        let stackTrace: string | undefined;
-        if (
-            typeof content.error == "object" &&
-            "stacktrace" in content.error &&
-            typeof content.error.stacktrace == "string" &&
-            content.error.stacktrace
-        ) {
-            stackTrace = `### Stacktrace:\n \`\`\`${content.error.stacktrace.replaceAll("`", "\\`")}\`\`\``;
-            delete content.error.stacktrace;
-        }
+    let stackTrace: string | undefined;
+    if (
+        typeof content.error == "object" &&
+        "stacktrace" in content.error &&
+        typeof content.error.stacktrace == "string" &&
+        content.error.stacktrace
+    ) {
+        stackTrace = `### Stacktrace:\n \`\`\`${content.error.stacktrace.replaceAll("`", "\\`")}\`\`\``;
+        delete content.error.stacktrace;
+    }
 
+    if (stackTrace) {
         logErrorToWebhook("client", content, stackTrace);
-
-        return c.json({ success: true }, 200);
-    },
-);
+    } else {
+        logErrorToWebhook("client", content);
+    }
+    return c.json({ success: true }, 200);
+});
 
 // reset player count to 0 if region seems to be down
 setInterval(() => {
