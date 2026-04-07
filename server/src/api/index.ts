@@ -186,21 +186,16 @@ app.post("/api/find_game", validateParams(zFindGameBody), async (c) => {
 
 app.post("/api/report_error", rateLimitMiddleware(5, 60 * 1000), async (c) => {
     const content = await c.req.json();
-    if ("error" in content && typeof content.error === "string") {
-        try {
-            content.error = JSON.parse(content.error);
-        } catch {}
-    }
 
     let stackTrace: string | undefined;
     if (
-        typeof content.error == "object" &&
-        "stacktrace" in content.error &&
-        typeof content.error.stacktrace == "string" &&
-        content.error.stacktrace
+        typeof content.data == "object" &&
+        "stacktrace" in content.data &&
+        typeof content.data.stacktrace == "string" &&
+        content.data.stacktrace
     ) {
-        stackTrace = `### Stacktrace:\n \`\`\`${content.error.stacktrace.replaceAll("`", "\\`")}\`\`\``;
-        delete content.error.stacktrace;
+        stackTrace = `### Stacktrace:\n \`\`\`${content.data.stacktrace.replaceAll("`", "\\`")}\`\`\``;
+        delete content.data.stacktrace;
     }
 
     if (stackTrace) {
