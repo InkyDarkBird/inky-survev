@@ -160,7 +160,9 @@ export class ExplosionBarn {
 
         let damage = def.damage;
 
-        if (dist > def.rad.min) {
+        const coll = collider.createCircle(explosion.pos, def.rad.min);
+
+        if (dist > def.rad.min && !coldet.test(coll, obj.collider)) {
             damage = math.remap(dist, 0, def.rad.max, damage, 0);
         }
 
