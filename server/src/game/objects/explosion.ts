@@ -68,7 +68,6 @@ export class ExplosionBarn {
             for (const obj of objects) {
                 if (!util.sameLayer(obj.layer, explosion.layer)) continue;
                 if ((obj as { dead?: boolean }).dead) continue;
-                if (obj.__type === ObjectType.Obstacle && obj.height <= 0.25) continue;
                 if (
                     obj.__type === ObjectType.Player ||
                     obj.__type === ObjectType.Obstacle ||
@@ -115,7 +114,7 @@ export class ExplosionBarn {
                 if (
                     obj.__type === ObjectType.Obstacle &&
                     obj.collidable &&
-                    obj.__id !== explosion.ignoreObstacleId
+                    obj.height > 0.5
                 )
                     break;
             }
@@ -226,7 +225,6 @@ export class ExplosionBarn {
         pos: Vec2,
         layer: number,
         damageParams: Omit<DamageParams, "damage" | "dir">,
-        ignoreObstacleId?: number,
     ) {
         const def = GameObjectDefs[type];
         assert(def.type === "explosion", `Invalid explosion with type ${type}`);
@@ -237,7 +235,6 @@ export class ExplosionBarn {
             pos,
             layer,
             damageParams,
-            ignoreObstacleId,
         };
         this.explosions.push(explosion);
         this.newExplosions.push(explosion);
@@ -250,5 +247,4 @@ interface Explosion {
     pos: Vec2;
     layer: number;
     damageParams: Omit<DamageParams, "damage" | "dir">;
-    ignoreObstacleId?: number;
 }

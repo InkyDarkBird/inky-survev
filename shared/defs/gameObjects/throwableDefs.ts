@@ -808,8 +808,7 @@ export const ThrowableDefs: Record<string, ThrowableDef> = {
         inventoryOrder: 1,
         cookable: true,
         noPotatoSwap: true,
-        // HACK: force constant velocity until we figure out how surviv's airstrike bomb velocity really worked
-        forceMaxThrowDistance: true,
+        forceMaxThrowDistance: false,
         explodeOnImpact: true,
         playerCollision: false,
         fuseTime: 4,

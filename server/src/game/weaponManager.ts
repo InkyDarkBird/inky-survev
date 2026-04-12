@@ -1197,8 +1197,8 @@ export class WeaponManager {
                 math.clamp(
                     this.player.toMouseLen,
                     0,
-                    GameConfig.player.throwableMaxMouseDist * 1.8,
-                ) / 15;
+                    GameConfig.player.throwableMaxMouseDist,
+                ) / GameConfig.player.throwableMaxMouseDist;
         }
 
         const throwStr = multiplier * throwableDef.throwPhysics.speed;

@@ -3077,21 +3077,15 @@ export class Player extends BaseGameObject {
             this.role == "grenadier" ||
             this.role == "demo"
         ) {
-            const martyrNadeType = "martyr_nade";
-            const throwableDef = GameObjectDefs[martyrNadeType] as ThrowableDef;
-            for (let i = 0; i < 12; i++) {
-                const velocity = v2.mul(v2.randomUnit(), util.random(2, 5));
-                this.game.projectileBarn.addProjectile(
-                    this.__id,
-                    martyrNadeType,
-                    this.pos,
-                    1,
-                    this.layer,
-                    velocity,
-                    throwableDef.fuseTime,
-                    GameConfig.DamageType.Player,
-                );
-            }
+            this.game.projectileBarn.addSplitProjectiles(
+                this.__id,
+                "martyr_nade",
+                this.pos,
+                this.layer,
+                v2.create(0, 0),
+                12,
+                5,
+            );
         }
 
         if (this.game.map.factionMode) {
